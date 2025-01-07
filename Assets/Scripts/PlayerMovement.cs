@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float flapForce = 200f; // fuerza del salto
+    public float flapForce;// fuerza del salto
     public float gravityScale = 1f; // escala de gravedad
     private Rigidbody rb;
-    //private Animator animator;
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //animator = GetComponent<Animator>(); // Obtener el componente Animator
+        animator = GetComponent<Animator>(); // Obtener el componente Animator
         //rb.gravityScale = gravityScale; // Aplicar la escala de gravedad
     }
 
@@ -38,10 +38,15 @@ public class PlayerMovement : MonoBehaviour
     void Flap()
     {
         // Aplicar fuerza hacia arriba
-        rb.velocity = Vector2.zero; // Reiniciar la velocidad vertical
-        rb.AddForce(new Vector2(0, flapForce)); // Aplicar la fuerza de salto
+        rb.velocity = Vector2.up * flapForce; // Reiniciar la velocidad vertical
 
-        // Activar la animación de salto
-        //animator.SetBool("jump", true);
+
+        //Activar la animación de salto
+        animator.SetBool("jump", true);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        GameManager.instance.GameOver();
     }
 }

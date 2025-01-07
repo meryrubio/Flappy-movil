@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.TextCore.Text;
 
 public class GameManager : MonoBehaviour
 {
     //este script controla todo, funcionalidad y variabbles
 
     public static GameManager instance; // accesible a todo (variable estática) SINGLETON
-    public enum GameManagerVariables { POINTS }; // tipo enum (enumerar) para facilitar la lectura de código, time seria 0, points 1
+    public enum GameManagerVariables { TIME, POINTS }; // tipo enum (enumerar) para facilitar la lectura de código, time seria 0, points 1
 
-   
+    public GameObject gameOverPanel;
+
+    private float time;
     private int points;
+
 
     private void Awake()
     {
@@ -26,6 +28,9 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject); // isma se va / se destruye el gameobject, para que no haya dos o mas gms en el juego
         }
     }
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,23 +40,24 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Detectar si se presiona la tecla ESCAPE
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            // Cargar la escena del menú principal
-            SceneManager.LoadScene("MENU");
-        }
-      
+
+        time += Time.deltaTime;
     }
 
-  
-
-    public void LoadScene(string sceneName)
+    //getter (es para obtener el valor de esa variable)
+    public float GetTime()
     {
-        SceneManager.LoadScene(sceneName);
-        /* AudioManager.instance.ClearAudios();*/ // oye, audioManager, limpia todos los sonidos que estan sonando
+        return time;
+    }
+    public void ResetTime() //para qyue el gamemanager reinicie el contador cada vez que se reinicia la escena.
+    {
+        time = 0;
     }
 
+    public void IncreaseScore(int amount) // este metodo sirve para que los puntos puedan ir amuentando
+    {
+        points += amount;
+    }
     public int GetPoints()
     {
 
@@ -65,13 +71,28 @@ public class GameManager : MonoBehaviour
         points = value;
     }
 
-   
+    //callback -- funcion que se va  a llamar en el onclick() de los botones
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+        AudioManager.instance.ClearAudios(); // oye, audioManager, limpia todos los sonidos que estan sonando
+    }
 
     public void ExitGame()
     {
         Debug.Log("EXIT!!");
         Application.Quit();// cierra la aplicación
     }
+    //EventSystem detecta los clicks 
 
+    public void GameOver()
+    {
+        gameOverPanel.SetActive(true);
+        Time.timeScale = 0;
+    }
 
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

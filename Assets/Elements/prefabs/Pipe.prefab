@@ -57,6 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1440588609096790724}
   - component: {fileID: 3029341275606286334}
+  - component: {fileID: 3583228392818769096}
   m_Layer: 0
   m_Name: hueco
   m_TagString: Untagged
@@ -100,6 +101,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.1113, y: 64.514435, z: 21.419683}
   m_Center: {x: 1.5657859, y: 7.011857, z: -1.6394926}
+--- !u!114 &3583228392818769096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8659011787172701318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59ba60b86f36594d8308e9c047082c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &372854959410428881
 PrefabInstance:
   m_ObjectHideFlags: 0
