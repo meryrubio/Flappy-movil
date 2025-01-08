@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance; // accesible a todo (variable estática) SINGLETON
     public enum GameManagerVariables { TIME, POINTS }; // tipo enum (enumerar) para facilitar la lectura de código, time seria 0, points 1
 
-    public GameObject gameOverPanel;
+
 
     private float time;
     private int points;
@@ -87,7 +87,6 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        gameOverPanel.SetActive(true);
         Time.timeScale = 0;
     }
 

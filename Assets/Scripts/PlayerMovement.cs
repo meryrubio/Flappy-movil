@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float gravityScale = 1f; // escala de gravedad
     private Rigidbody rb;
     private Animator animator;
+    public GameObject gameOverPanel;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             Flap();
+        //AdDisplayManager.instance.ShowAd();
         }
     }
 #elif UNITY_ANDROID // Para Android
@@ -47,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        gameOverPanel.SetActive(true);
+
         GameManager.instance.GameOver();
     }
 }
