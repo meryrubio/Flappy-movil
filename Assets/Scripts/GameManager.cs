@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
     //callback -- funcion que se va  a llamar en el onclick() de los botones
     public void LoadScene(string sceneName)
     {
+        points = 0;
         Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
         AudioManager.instance.ClearAudios(); // oye, audioManager, limpia todos los sonidos que estan sonando
@@ -100,6 +101,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Time.timeScale = 0;
+       
     }
 
    

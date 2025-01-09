@@ -46,27 +46,34 @@ public class PlayerMovement : MonoBehaviour
         AudioManager.instance.PlayAudio(jumpClip, "jumpSound");
 
 
-        //Activar la animación de salto
-        //animator.SetBool("jump", true);
+       
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.GetComponent<Score>()) 
-        { 
-            gameOverPanel.SetActive(true);
-
+        {
+            animator.SetBool("muerteofi", true);
             GameManager.instance.SetDeath(GameManager.instance.GetDeath() + 1);//cada vez que muero cuenta uno
-
-            GameManager.instance.GameOver();
 
             AudioManager.instance.PlayAudio(deadClip, "deadSound"); //se reproduce sonido de muerte
 
-            if(GameManager.instance.GetDeath() >= 3)
-            {
-                AdDisplayManager.instance.ShowAd(); //cuando muero 3 veces sale un anuncio
-                GameManager.instance.SetDeath(0);
-            }
+           
+        }
+        else
+        {
+            animator.SetBool("muerteofi", false);
+        }
+    }
+
+    public void HandleDeath() {
+        GameManager.instance.GameOver();
+        gameOverPanel.SetActive(true);
+
+        if (GameManager.instance.GetDeath() >= 3)
+        {
+            AdDisplayManager.instance.ShowAd(); //cuando muero 3 veces sale un anuncio
+            GameManager.instance.SetDeath(0);
         }
     }
 }
