@@ -8,12 +8,13 @@ public class GameManager : MonoBehaviour
     //este script controla todo, funcionalidad y variabbles
 
     public static GameManager instance; // accesible a todo (variable estática) SINGLETON
-    public enum GameManagerVariables { TIME, POINTS }; // tipo enum (enumerar) para facilitar la lectura de código, time seria 0, points 1
+    public enum GameManagerVariables { TIME, POINTS, DEATH }; // tipo enum (enumerar) para facilitar la lectura de código, time seria 0, points 1
 
 
 
     private float time;
     private int points;
+    private int death;
 
 
     private void Awake()
@@ -71,9 +72,20 @@ public class GameManager : MonoBehaviour
         points = value;
     }
 
+    public int GetDeath() 
+    { 
+        return death;
+    }
+
+    public void SetDeath(int value)
+    {
+        death = value;
+    }
+
     //callback -- funcion que se va  a llamar en el onclick() de los botones
     public void LoadScene(string sceneName)
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
         AudioManager.instance.ClearAudios(); // oye, audioManager, limpia todos los sonidos que estan sonando
     }
@@ -90,8 +102,5 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void ResetGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+   
 }

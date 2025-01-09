@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private Animator animator;
     public GameObject gameOverPanel;
+    public AudioClip deadClip; //audio de muerte
+    public AudioClip jumpClip; //audio de salto
 
     void Start()
     {
@@ -41,16 +43,30 @@ public class PlayerMovement : MonoBehaviour
     {
         // Aplicar fuerza hacia arriba
         rb.velocity = Vector2.up * flapForce; // Reiniciar la velocidad vertical
+        AudioManager.instance.PlayAudio(jumpClip, "jumpSound");
 
 
         //Activar la animación de salto
-        animator.SetBool("jump", true);
+        //animator.SetBool("jump", true);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        gameOverPanel.SetActive(true);
+        if (!other.GetComponent<Score>()) 
+        { 
+            gameOverPanel.SetActive(true);
 
-        GameManager.instance.GameOver();
+            GameManager.instance.SetDeath(GameManager.instance.GetDeath() + 1);//cada vez que muero cuenta uno
+
+            GameManager.instance.GameOver();
+
+            AudioManager.instance.PlayAudio(deadClip, "deadSound"); //se reproduce sonido de muerte
+
+            if(GameManager.instance.GetDeath() >= 3)
+            {
+                AdDisplayManager.instance.ShowAd(); //cuando muero 3 veces sale un anuncio
+                GameManager.instance.SetDeath(0);
+            }
+        }
     }
 }

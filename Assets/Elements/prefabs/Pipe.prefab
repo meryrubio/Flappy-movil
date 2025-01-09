@@ -32,6 +32,7 @@ Transform:
   m_Children:
   - {fileID: 8753158962117048525}
   - {fileID: 3648289603077403616}
+  - {fileID: 1440588609096790724}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4708361549623906721
@@ -73,12 +74,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8659011787172701318}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.9999799, y: -0, z: -0, w: 0.006338391}
-  m_LocalPosition: {x: 0.0009729871, y: -0.11238561, z: 0.016901853}
-  m_LocalScale: {x: 0.0011911509, y: 0.0011911509, z: 0.0011911509}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.00097298704, y: -0.12588759, z: -0.015494552}
+  m_LocalScale: {x: 0.0011911507, y: 0.0011911507, z: 0.0011911507}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8753158962117048525}
+  m_Father: {fileID: 233056426836253821}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3029341275606286334
 BoxCollider:
@@ -99,8 +100,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.1113, y: 64.514435, z: 21.419683}
-  m_Center: {x: 1.5657859, y: 7.011857, z: -1.6394926}
+  m_Size: {x: 20.282604, y: 95.41929, z: 21.419683}
+  m_Center: {x: 0.78337836, y: -8.440568, z: -1.639493}
 --- !u!114 &3583228392818769096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,11 +148,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8959298133429699356, guid: 2236d951b3a835c4ab2bb2a850685824, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.2358
+      value: -0.2707
       objectReference: {fileID: 0}
     - target: {fileID: 8959298133429699356, guid: 2236d951b3a835c4ab2bb2a850685824, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.0004
       objectReference: {fileID: 0}
     - target: {fileID: 8959298133429699356, guid: 2236d951b3a835c4ab2bb2a850685824, type: 3}
       propertyPath: m_LocalRotation.w
@@ -187,10 +188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8959298133429699356, guid: 2236d951b3a835c4ab2bb2a850685824, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1440588609096790724}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8583300703849912742, guid: 2236d951b3a835c4ab2bb2a850685824, type: 3}
       insertIndex: -1
