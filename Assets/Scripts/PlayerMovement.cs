@@ -26,9 +26,9 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             Flap();
-        //AdDisplayManager.instance.ShowAd();
+            //AdDisplayManager.instance.ShowAd();
         }
-    }
+
 #elif UNITY_ANDROID // Para Android
         // Detectar toques en la pantalla
         foreach (Touch touch in Input.touches)
@@ -39,15 +39,17 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 #endif
-    void Flap()
-    {
-        // Aplicar fuerza hacia arriba
-        rb.velocity = Vector2.up * flapForce; // Reiniciar la velocidad vertical
-        AudioManager.instance.PlayAudio(jumpClip, "jumpSound");
-
-
-       
     }
+        void Flap()
+        {
+            // Aplicar fuerza hacia arriba
+            rb.velocity = Vector2.up * flapForce; // Reiniciar la velocidad vertical
+            AudioManager.instance.PlayAudio(jumpClip, "jumpSound");
+
+
+
+        }
+    
 
     private void OnTriggerEnter(Collider other)
     {
